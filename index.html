@@ -1,0 +1,3493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Big Belly Burger | Big Taste. Bigger Cravings.</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111;
+            color: #fff;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: rgba(10, 10, 10, .94);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            color: #ffcc00;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e63946;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        .order-btn {
+            background: #e63946;
+            color: #fff;
+            padding: 13px 23px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .order-btn:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 130px 7% 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 80% 50%, rgba(230, 57, 70, .22), transparent 35%),
+                #111;
+        }
+
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+
+        .small-title {
+            color: #ffcc00;
+            font-size: 16px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 7vw, 100px);
+            line-height: .9;
+            font-weight: 1000;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #e63946;
+        }
+
+        .hero p {
+            margin: 28px 0;
+            max-width: 520px;
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 15px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: .3s;
+        }
+
+        .primary-btn {
+            background: #e63946;
+            color: white;
+        }
+
+        .secondary-btn {
+            border: 1px solid #555;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn:hover {
+            border-color: #ffcc00;
+            color: #ffcc00;
+        }
+
+        /* BURGER */
+
+        .hero-burger {
+            width: 48%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .burger-circle {
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 100px rgba(230, 57, 70, .25);
+        }
+
+        /* .burger-emoji{
+    font-size:260px;
+    filter:drop-shadow(0 30px 20px rgba(0,0,0,.5));
+    animation:float 4s ease-in-out infinite;
+} */
+        .hero-burger-image {
+            width: 430px;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 50%;
+            filter: drop-shadow(0 30px 25px rgba(0, 0, 0, .55));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-9deg);
+            }
+
+            50% {
+                transform: translateY(-70px) rotate(7deg);
+            }
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #ffcc00;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* ================= BEST SELLERS ================= */
+
+        .best {
+            background: #181818;
+        }
+
+        .burger-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .burger-card {
+            background: #222;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .4s;
+            border: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .burger-card:hover {
+            transform: translateY(-10px);
+            border-color: #e63946;
+        }
+
+        /* .food-image{
+    height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#292929;
+    font-size:110px;
+} */
+
+        .food-image {
+            height: 230px;
+            overflow: hidden;
+            background: #292929;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .4s;
+        }
+
+        .burger-card:hover .food-image img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 42px;
+        }
+
+        .card-bottom {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: #ffcc00;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .small-order {
+            background: #e63946;
+            color: white;
+            text-decoration: none;
+            padding: 9px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        
+
+        /* ================= ABOUT US ================= */
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 80px;
+            background: #111;
+        }
+
+        .about-image {
+            position: relative;
+            height: 520px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            display: block;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
+        }
+
+        .about-badge {
+            position: absolute;
+            right: -30px;
+            bottom: 30px;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .4);
+        }
+
+        .about-badge strong {
+            color: #ffcc00;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .about-badge span {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .about-content small {
+            color: #ffcc00;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .about-content h2 {
+            font-size: 50px;
+            line-height: 1.05;
+            margin: 15px 0 25px;
+        }
+
+        .about-content p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            max-width: 580px;
+        }
+
+        .about-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 28px 0;
+        }
+
+        .about-points div {
+            color: #ddd;
+            font-weight: 600;
+        }
+
+        .about-points span {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+
+        /* ================= FRANCHISE ================= */
+
+        .franchise {
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .franchise-text {
+            width: 50%;
+        }
+
+        .franchise-text small {
+            color: #ffcc00;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .franchise h2 {
+            font-size: 50px;
+            margin: 15px 0;
+        }
+
+        .franchise p {
+            line-height: 1.7;
+            max-width: 550px;
+        }
+
+        .franchise-btn {
+            display: inline-block;
+            margin-top: 25px;
+            background: #111;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+   
+
+        .franchise-box {
+            width: 45%;
+            height: 320px;
+            border-radius: 25px;
+            overflow: hidden;
+            background: #222;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+        }
+
+        .franchise-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .5s;
+        }
+
+        .franchise-box:hover img {
+            transform: scale(1.06);
+        }
+
+        .franchise-text,
+        .franchise-box {
+            width: 100%;
+        }
+
+        /* ================= REVIEWS ================= */
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .stars {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .review h4 {
+            color: white;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery {
+            background: #181818;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        /* .gallery-item{
+    height:220px;
+    background:#292929;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:80px;
+    transition:.3s;
+} */
+
+        .gallery-item {
+            height: 220px;
+            background: #292929;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: .4s;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .5s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-item a {
+            color: #3205e4;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            color: #ffcc00;
+        }
+
+        .contact-section {
+            background: #111;
+        }
+
+        .contact-section .section-title p {
+            color: #999;
+            max-width: 650px;
+            margin: 18px auto 0;
+            line-height: 1.7;
+        }
+
+        .contact-wrapper {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 35px;
+        }
+
+
+        /* CONTACT INFO */
+
+        .contact-info {
+            background: #1b1b1b;
+            border-radius: 25px;
+            padding: 45px;
+            border: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .contact-info h3,
+        .contact-form-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact-intro {
+            color: #999;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .contact-item div:last-child {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .contact-item span {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .contact-item strong {
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .contact-social {
+            border-top: 1px solid #292929;
+            margin-top: 35px;
+            padding-top: 25px;
+        }
+
+        .contact-social p {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #292929;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .social-links a:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+
+        /* CONTACT FORM */
+
+        .contact-form-box {
+            background: #1b1b1b;
+            border-radius: 25px;
+            padding: 45px;
+            border: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ddd;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            outline: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e63946;
+            box-shadow: 0 0 0 2px rgba(230, 57, 70, .12);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .contact-submit {
+            width: 100%;
+            border: none;
+            background: #e63946;
+            color: #fff;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .contact-submit:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        /* ================= CONTACT CTA ================= */
+
+        .contact-cta {
+            text-align: center;
+        }
+
+        .contact-cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .contact-cta p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #080808;
+            padding: 60px 7% 25px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            color: #888;
+            max-width: 350px;
+            line-height: 1.6;
+        }
+
+        footer h3 {
+            margin-bottom: 18px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #888;
+        }
+
+        footer a:hover {
+            color: #ffcc00;
+        }
+
+        .copyright {
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .order-btn {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-burger {
+                width: 100%;
+                margin-top: 50px;
+            }
+
+            .burger-circle {
+                width: 320px;
+                height: 320px;
+            }
+
+            /* .burger-emoji{
+        font-size:160px;
+    } */
+
+            .hero-burger-image {
+                width: 270px;
+                height: 270px;
+            }
+
+            .burger-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .franchise {
+                flex-direction: column;
+            }
+
+            .franchise-text,
+            .franchise-box {
+                width: 100%;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .about-points {
+                text-align: left;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-box {
+                padding: 30px;
+            }
+        }
+
+        @media(max-width:550px) {
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .burger-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .franchise h2 {
+                font-size: 38px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .about-image {
+                height: 320px;
+            }
+
+            .about-badge {
+                width: 95px;
+                height: 95px;
+                right: -10px;
+                bottom: 20px;
+            }
+
+            .about-badge strong {
+                font-size: 20px;
+            }
+
+            .about-content h2 {
+                font-size: 38px;
+            }
+
+            .about-points {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-box {
+                padding: 25px 20px;
+            }
+
+            .contact-info h3,
+            .contact-form-box h3 {
+                font-size: 24px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            BIG <span>BELLY</span> BURGER
+        </div>
+
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <a href="#store" class="order-btn">Order Now</a>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                WELCOME TO BIG BELLY
+            </div>
+
+            <h1>
+                BIG TASTE.<br>
+                <span>BIGGER</span><br>
+                CRAVINGS.
+            </h1>
+
+            <p>
+                Freshly prepared burgers, loaded with delicious ingredients
+                and packed with the kind of flavour that keeps you coming back.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#menu" class="primary-btn">
+                    Explore Menu
+                </a>
+
+                <a href="#store" class="secondary-btn">
+                    Order Online
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-burger">
+
+            <div class="burger-circle">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=90"
+                    alt="Big Belly Burger" class="hero-burger-image">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BEST SELLERS ================= -->
+
+    <section class="best" id="menu">
+
+        <div class="section-title">
+            <small>OUR FAVORITES</small>
+            <h2>Best Selling Burgers</h2>
+        </div>
+
+        <div class="burger-grid">
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=85"
+                        alt="Classic Belly Burger">
+                </div>
+
+                <div class="card-content">
+                    <h3>Classic Belly Burger</h3>
+
+                    <p>
+                        Juicy patty, fresh vegetables and our signature sauce.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹149</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=85"
+                        alt="Double Cheese Monster">
+                </div>
+
+                <div class="card-content">
+                    <h3>Double Cheese Monster</h3>
+
+                    <p>
+                        Double patty with double cheese for serious cravings.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹229</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=700&q=85"
+                        alt="Smoky BBQ Burger">
+                </div>
+                <div class="card-content">
+                    <h3>Smoky BBQ Burger</h3>
+
+                    <p>
+                        Smoky BBQ sauce with a juicy grilled patty.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹199</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=700&q=85"
+                        alt="Spicy Crunch Burger">
+                </div>
+
+                <div class="card-content">
+                    <h3>Spicy Crunch Burger</h3>
+
+                    <p>
+                        Crispy, spicy and loaded with signature flavours.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹179</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT US ================= -->
+
+    <section class="about-section" id="about">
+
+        <div class="about-image">
+
+            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=1000&q=90"
+                alt="Big Belly Burger">
+
+            <div class="about-badge">
+                <strong>BIG</strong>
+                <span>TASTE</span>
+            </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <small>ABOUT BIG BELLY BURGER</small>
+
+            <h2>More Than Just A Burger.</h2>
+
+            <p>
+                At Big Belly Burger, we believe a great burger should be
+                more than just a quick meal. It should be juicy, fresh,
+                satisfying and full of flavour.
+            </p>
+
+            <p>
+                From our freshly prepared ingredients to our signature
+                sauces and perfectly grilled patties, every burger is
+                made to deliver that unforgettable Big Belly experience.
+            </p>
+
+            <div class="about-points">
+
+                <div>
+                    <span>✓</span>
+                    Fresh Ingredients
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Signature Flavours
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Made Fresh
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Big Portions
+                </div>
+
+            </div>
+
+            <a href="#menu" class="primary-btn">
+                Explore Our Menu
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FRANCHISE ================= -->
+
+    <section class="franchise">
+
+        <div class="franchise-text">
+
+            <small>GROW WITH US</small>
+
+            <h2>Become A Big Belly Burger Partner</h2>
+
+            <p>
+                Bring the Big Belly Burger experience to your city.
+                Join our growing franchise network and build a business
+                around one of the world's most loved foods.
+            </p>
+
+            <a href="#contact" class="franchise-btn">
+                Apply For Franchise
+            </a>
+
+        </div>
+
+
+        <!-- <div class="franchise-box">
+        🍔
+    </div> -->
+
+        <div class="franchise-box">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=90"
+                alt="Big Belly Burger Franchise">
+        </div>
+
+    </section>
+
+
+    <!-- ================= REVIEWS ================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>WHAT PEOPLE SAY</small>
+
+            <h2>Customer Love</h2>
+
+        </div>
+
+
+        <div class="review-grid">
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The burger was juicy, fresh and absolutely delicious.
+                    Definitely coming back!"
+                </p>
+
+                <h4>— Rahul</h4>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Loved the cheese and the overall taste.
+                    Perfect for a weekend burger craving."
+                </p>
+
+                <h4>— Priya</h4>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Great food, great presentation and really good service."
+                </p>
+
+                <h4>— Arjun</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GALLERY ================= -->
+
+    <section class="gallery" id="gallery">
+
+        <div class="section-title">
+
+            <small>SEE THE BELLY EXPERIENCE</small>
+
+            <h2>Our Gallery</h2>
+
+        </div>
+
+
+        <!-- <div class="gallery-grid">
+
+        <div class="gallery-item">🍔</div>
+        <div class="gallery-item">🍟</div>
+        <div class="gallery-item">🥤</div>
+        <div class="gallery-item">🍔</div>
+        <div class="gallery-item">🍟</div>
+        <div class="gallery-item">🍔</div>
+
+    </div> -->
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=90"
+                    alt="Big Belly Burger">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=90"
+                    alt="Crispy French Fries">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=90"
+                    alt="Cold Drink">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=90"
+                    alt="Cheese Burger">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=900&q=90"
+                    alt="Loaded Fries">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=900&q=90"
+                    alt="Spicy Burger">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STORE CTA ================= -->
+
+    <section class="contact-cta" id="store">
+
+        <h2>Ready For A Big Bite?</h2>
+
+        <p>
+            Choose your favourite burger and satisfy your cravings.
+        </p>
+
+        <a href="#" class="primary-btn">
+            Order Online
+        </a>
+
+    </section>
+
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="section-title">
+            <small>GET IN TOUCH</small>
+            <h2>Let's Talk About Burgers</h2>
+            <p>
+                Have a question, feedback or want to know more about Big Belly Burger?
+                We'd love to hear from you.
+            </p>
+        </div>
+
+
+        <div class="contact-wrapper">
+
+            <!-- LEFT SIDE -->
+
+            <div class="contact-info">
+
+                <h3>Contact Big Belly Burger</h3>
+
+                <p class="contact-intro">
+                    Whether you have feedback, want to partner with us,
+                    or simply want to say hello — we're always happy to hear from you.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">☎️</div>
+
+                    <div>
+                        <span>Call Us</span>
+                        <!-- <strong>+91 7096087456</strong> -->
+                        <a href="tel:+917096087456">+91 7096087456</a>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">✉️</div>
+
+                    <div>
+                        <span>Email Us</span>
+                        <strong>info@bigbellyburger.com</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">⌖</div>
+
+                    <div>
+                        <span>Visit Us</span>
+                        <strong>Ahmedabad, Gujarat</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-social">
+
+                    <p>Follow Big Belly Burger</p>
+
+                    <!-- <div class="social-links">
+
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+
+                    </div> -->
+
+                    <div class="social-links">
+
+                        <a href="https://www.instagram.com/bigbellyburgerindia?stkn=cGFvcTJrY285Ymtr" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">
+                            IG
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            FB
+                        </a>
+
+                        <a href="https://www.youtube.com/@bigbellyburger" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube">
+                            YT
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="contact-form-box">
+
+                <h3>Send Us A Message</h3>
+
+                <form onsubmit="sendMessage(event)">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <input type="email" placeholder="Enter your email" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Subject</label>
+
+                        <select required>
+
+                            <option value="">Select a subject</option>
+                            <option>General Enquiry</option>
+                            <option>Order Related</option>
+                            <option>Franchise Enquiry</option>
+                            <option>Feedback</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Your Message</label>
+
+                        <textarea rows="5" placeholder="Write your message..." required></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="contact-submit">
+                        Send Message →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-top">
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+                    BIG BELLY BURGER
+                </div>
+
+                <p>
+                    Big Taste. Bigger Cravings.
+                    Bringing bold burgers and unforgettable
+                    flavours to burger lovers.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Explore</h3>
+
+                <ul>
+                    <li><a href="#store">Store</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Follow Us</h3>
+
+                <ul>
+                    <li><a href="https://www.instagram.com/bigbellyburgerindia?stkn=cGFvcTJrY285Ymtr" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.youtube.com/@bigbellyburger" target="_blank">YouTube</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 Big Belly Burger. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function toggleMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList
+                .toggle("active");
+
+        }
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert("Thank you! Your message has been received by Big Belly Burger.");
+
+            event.target.reset();
+
+        }
+
+    </script>
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Big Belly Burger | Big Taste. Bigger Cravings.</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #111;
+            color: #fff;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            background: rgba(10, 10, 10, .94);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            color: #ffcc00;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #e63946;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        .order-btn {
+            background: #e63946;
+            color: #fff;
+            padding: 13px 23px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .order-btn:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 130px 7% 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 80% 50%, rgba(230, 57, 70, .22), transparent 35%),
+                #111;
+        }
+
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+
+        .small-title {
+            color: #ffcc00;
+            font-size: 16px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 7vw, 100px);
+            line-height: .9;
+            font-weight: 1000;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #e63946;
+        }
+
+        .hero p {
+            margin: 28px 0;
+            max-width: 520px;
+            color: #ccc;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 15px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: .3s;
+        }
+
+        .primary-btn {
+            background: #e63946;
+            color: white;
+        }
+
+        .secondary-btn {
+            border: 1px solid #555;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn:hover {
+            border-color: #ffcc00;
+            color: #ffcc00;
+        }
+
+        /* BURGER */
+
+        .hero-burger {
+            width: 48%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .burger-circle {
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 100px rgba(230, 57, 70, .25);
+        }
+
+        /* .burger-emoji{
+    font-size:260px;
+    filter:drop-shadow(0 30px 20px rgba(0,0,0,.5));
+    animation:float 4s ease-in-out infinite;
+} */
+        .hero-burger-image {
+            width: 430px;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 50%;
+            filter: drop-shadow(0 30px 25px rgba(0, 0, 0, .55));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-9deg);
+            }
+
+            50% {
+                transform: translateY(-70px) rotate(7deg);
+            }
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title small {
+            color: #ffcc00;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* ================= BEST SELLERS ================= */
+
+        .best {
+            background: #181818;
+        }
+
+        .burger-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .burger-card {
+            background: #222;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .4s;
+            border: 1px solid rgba(255, 255, 255, .05);
+        }
+
+        .burger-card:hover {
+            transform: translateY(-10px);
+            border-color: #e63946;
+        }
+
+        /* .food-image{
+    height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#292929;
+    font-size:110px;
+} */
+
+        .food-image {
+            height: 230px;
+            overflow: hidden;
+            background: #292929;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .4s;
+        }
+
+        .burger-card:hover .food-image img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.5;
+            min-height: 42px;
+        }
+
+        .card-bottom {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: #ffcc00;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .small-order {
+            background: #e63946;
+            color: white;
+            text-decoration: none;
+            padding: 9px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        
+
+        /* ================= ABOUT US ================= */
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 80px;
+            background: #111;
+        }
+
+        .about-image {
+            position: relative;
+            height: 520px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            display: block;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
+        }
+
+        .about-badge {
+            position: absolute;
+            right: -30px;
+            bottom: 30px;
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-8deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .4);
+        }
+
+        .about-badge strong {
+            color: #ffcc00;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .about-badge span {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .about-content small {
+            color: #ffcc00;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .about-content h2 {
+            font-size: 50px;
+            line-height: 1.05;
+            margin: 15px 0 25px;
+        }
+
+        .about-content p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            max-width: 580px;
+        }
+
+        .about-points {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 28px 0;
+        }
+
+        .about-points div {
+            color: #ddd;
+            font-weight: 600;
+        }
+
+        .about-points span {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+
+        /* ================= FRANCHISE ================= */
+
+        .franchise {
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .franchise-text {
+            width: 50%;
+        }
+
+        .franchise-text small {
+            color: #ffcc00;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .franchise h2 {
+            font-size: 50px;
+            margin: 15px 0;
+        }
+
+        .franchise p {
+            line-height: 1.7;
+            max-width: 550px;
+        }
+
+        .franchise-btn {
+            display: inline-block;
+            margin-top: 25px;
+            background: #111;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+   
+
+        .franchise-box {
+            width: 45%;
+            height: 320px;
+            border-radius: 25px;
+            overflow: hidden;
+            background: #222;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+        }
+
+        .franchise-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .5s;
+        }
+
+        .franchise-box:hover img {
+            transform: scale(1.06);
+        }
+
+        .franchise-text,
+        .franchise-box {
+            width: 100%;
+        }
+
+        /* ================= REVIEWS ================= */
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .stars {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .review h4 {
+            color: white;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery {
+            background: #181818;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        /* .gallery-item{
+    height:220px;
+    background:#292929;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:80px;
+    transition:.3s;
+} */
+
+        .gallery-item {
+            height: 220px;
+            background: #292929;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: .4s;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: .5s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-item a {
+            color: #3205e4;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            color: #ffcc00;
+        }
+
+        .contact-section {
+            background: #111;
+        }
+
+        .contact-section .section-title p {
+            color: #999;
+            max-width: 650px;
+            margin: 18px auto 0;
+            line-height: 1.7;
+        }
+
+        .contact-wrapper {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 35px;
+        }
+
+
+        /* CONTACT INFO */
+
+        .contact-info {
+            background: #1b1b1b;
+            border-radius: 25px;
+            padding: 45px;
+            border: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .contact-info h3,
+        .contact-form-box h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact-intro {
+            color: #999;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #e63946;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .contact-item div:last-child {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .contact-item span {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .contact-item strong {
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .contact-social {
+            border-top: 1px solid #292929;
+            margin-top: 35px;
+            padding-top: 25px;
+        }
+
+        .contact-social p {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #292929;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .social-links a:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+
+        /* CONTACT FORM */
+
+        .contact-form-box {
+            background: #1b1b1b;
+            border-radius: 25px;
+            padding: 45px;
+            border: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #ddd;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            outline: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e63946;
+            box-shadow: 0 0 0 2px rgba(230, 57, 70, .12);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #666;
+        }
+
+        .contact-submit {
+            width: 100%;
+            border: none;
+            background: #e63946;
+            color: #fff;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .contact-submit:hover {
+            background: #ffcc00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        /* ================= CONTACT CTA ================= */
+
+        .contact-cta {
+            text-align: center;
+        }
+
+        .contact-cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .contact-cta p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #080808;
+            padding: 60px 7% 25px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 27px;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            color: #888;
+            max-width: 350px;
+            line-height: 1.6;
+        }
+
+        footer h3 {
+            margin-bottom: 18px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #888;
+        }
+
+        footer a:hover {
+            color: #ffcc00;
+        }
+
+        .copyright {
+            border-top: 1px solid #222;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #111;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .order-btn {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-burger {
+                width: 100%;
+                margin-top: 50px;
+            }
+
+            .burger-circle {
+                width: 320px;
+                height: 320px;
+            }
+
+            /* .burger-emoji{
+        font-size:160px;
+    } */
+
+            .hero-burger-image {
+                width: 270px;
+                height: 270px;
+            }
+
+            .burger-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .franchise {
+                flex-direction: column;
+            }
+
+            .franchise-text,
+            .franchise-box {
+                width: 100%;
+            }
+
+            .review-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+            .about-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .about-points {
+                text-align: left;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-box {
+                padding: 30px;
+            }
+        }
+
+        @media(max-width:550px) {
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .burger-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .franchise h2 {
+                font-size: 38px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+
+            .about-image {
+                height: 320px;
+            }
+
+            .about-badge {
+                width: 95px;
+                height: 95px;
+                right: -10px;
+                bottom: 20px;
+            }
+
+            .about-badge strong {
+                font-size: 20px;
+            }
+
+            .about-content h2 {
+                font-size: 38px;
+            }
+
+            .about-points {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-box {
+                padding: 25px 20px;
+            }
+
+            .contact-info h3,
+            .contact-form-box h3 {
+                font-size: 24px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            BIG <span>BELLY</span> BURGER
+        </div>
+
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <a href="#store" class="order-btn">Order Now</a>
+
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                WELCOME TO BIG BELLY
+            </div>
+
+            <h1>
+                BIG TASTE.<br>
+                <span>BIGGER</span><br>
+                CRAVINGS.
+            </h1>
+
+            <p>
+                Freshly prepared burgers, loaded with delicious ingredients
+                and packed with the kind of flavour that keeps you coming back.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#menu" class="primary-btn">
+                    Explore Menu
+                </a>
+
+                <a href="#store" class="secondary-btn">
+                    Order Online
+                </a>
+            </div>
+
+        </div>
+
+        <div class="hero-burger">
+
+            <div class="burger-circle">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=90"
+                    alt="Big Belly Burger" class="hero-burger-image">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BEST SELLERS ================= -->
+
+    <section class="best" id="menu">
+
+        <div class="section-title">
+            <small>OUR FAVORITES</small>
+            <h2>Best Selling Burgers</h2>
+        </div>
+
+        <div class="burger-grid">
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=85"
+                        alt="Classic Belly Burger">
+                </div>
+
+                <div class="card-content">
+                    <h3>Classic Belly Burger</h3>
+
+                    <p>
+                        Juicy patty, fresh vegetables and our signature sauce.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹149</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=85"
+                        alt="Double Cheese Monster">
+                </div>
+
+                <div class="card-content">
+                    <h3>Double Cheese Monster</h3>
+
+                    <p>
+                        Double patty with double cheese for serious cravings.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹229</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=700&q=85"
+                        alt="Smoky BBQ Burger">
+                </div>
+                <div class="card-content">
+                    <h3>Smoky BBQ Burger</h3>
+
+                    <p>
+                        Smoky BBQ sauce with a juicy grilled patty.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹199</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="burger-card">
+
+                <!-- <div class="food-image">🍔</div> -->
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=700&q=85"
+                        alt="Spicy Crunch Burger">
+                </div>
+
+                <div class="card-content">
+                    <h3>Spicy Crunch Burger</h3>
+
+                    <p>
+                        Crispy, spicy and loaded with signature flavours.
+                    </p>
+
+                    <div class="card-bottom">
+                        <span class="price">₹179</span>
+                        <a href="#store" class="small-order">Order</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT US ================= -->
+
+    <section class="about-section" id="about">
+
+        <div class="about-image">
+
+            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=1000&q=90"
+                alt="Big Belly Burger">
+
+            <div class="about-badge">
+                <strong>BIG</strong>
+                <span>TASTE</span>
+            </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <small>ABOUT BIG BELLY BURGER</small>
+
+            <h2>More Than Just A Burger.</h2>
+
+            <p>
+                At Big Belly Burger, we believe a great burger should be
+                more than just a quick meal. It should be juicy, fresh,
+                satisfying and full of flavour.
+            </p>
+
+            <p>
+                From our freshly prepared ingredients to our signature
+                sauces and perfectly grilled patties, every burger is
+                made to deliver that unforgettable Big Belly experience.
+            </p>
+
+            <div class="about-points">
+
+                <div>
+                    <span>✓</span>
+                    Fresh Ingredients
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Signature Flavours
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Made Fresh
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Big Portions
+                </div>
+
+            </div>
+
+            <a href="#menu" class="primary-btn">
+                Explore Our Menu
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FRANCHISE ================= -->
+
+    <section class="franchise">
+
+        <div class="franchise-text">
+
+            <small>GROW WITH US</small>
+
+            <h2>Become A Big Belly Burger Partner</h2>
+
+            <p>
+                Bring the Big Belly Burger experience to your city.
+                Join our growing franchise network and build a business
+                around one of the world's most loved foods.
+            </p>
+
+            <a href="#contact" class="franchise-btn">
+                Apply For Franchise
+            </a>
+
+        </div>
+
+
+        <!-- <div class="franchise-box">
+        🍔
+    </div> -->
+
+        <div class="franchise-box">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=90"
+                alt="Big Belly Burger Franchise">
+        </div>
+
+    </section>
+
+
+    <!-- ================= REVIEWS ================= -->
+
+    <section>
+
+        <div class="section-title">
+
+            <small>WHAT PEOPLE SAY</small>
+
+            <h2>Customer Love</h2>
+
+        </div>
+
+
+        <div class="review-grid">
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The burger was juicy, fresh and absolutely delicious.
+                    Definitely coming back!"
+                </p>
+
+                <h4>— Rahul</h4>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Loved the cheese and the overall taste.
+                    Perfect for a weekend burger craving."
+                </p>
+
+                <h4>— Priya</h4>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Great food, great presentation and really good service."
+                </p>
+
+                <h4>— Arjun</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= GALLERY ================= -->
+
+    <section class="gallery" id="gallery">
+
+        <div class="section-title">
+
+            <small>SEE THE BELLY EXPERIENCE</small>
+
+            <h2>Our Gallery</h2>
+
+        </div>
+
+
+        <!-- <div class="gallery-grid">
+
+        <div class="gallery-item">🍔</div>
+        <div class="gallery-item">🍟</div>
+        <div class="gallery-item">🥤</div>
+        <div class="gallery-item">🍔</div>
+        <div class="gallery-item">🍟</div>
+        <div class="gallery-item">🍔</div>
+
+    </div> -->
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=90"
+                    alt="Big Belly Burger">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=90"
+                    alt="Crispy French Fries">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=90"
+                    alt="Cold Drink">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=90"
+                    alt="Cheese Burger">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=900&q=90"
+                    alt="Loaded Fries">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=900&q=90"
+                    alt="Spicy Burger">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STORE CTA ================= -->
+
+    <section class="contact-cta" id="store">
+
+        <h2>Ready For A Big Bite?</h2>
+
+        <p>
+            Choose your favourite burger and satisfy your cravings.
+        </p>
+
+        <a href="#" class="primary-btn">
+            Order Online
+        </a>
+
+    </section>
+
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="section-title">
+            <small>GET IN TOUCH</small>
+            <h2>Let's Talk About Burgers</h2>
+            <p>
+                Have a question, feedback or want to know more about Big Belly Burger?
+                We'd love to hear from you.
+            </p>
+        </div>
+
+
+        <div class="contact-wrapper">
+
+            <!-- LEFT SIDE -->
+
+            <div class="contact-info">
+
+                <h3>Contact Big Belly Burger</h3>
+
+                <p class="contact-intro">
+                    Whether you have feedback, want to partner with us,
+                    or simply want to say hello — we're always happy to hear from you.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">☎️</div>
+
+                    <div>
+                        <span>Call Us</span>
+                        <!-- <strong>+91 7096087456</strong> -->
+                        <a href="tel:+917096087456">+91 7096087456</a>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">✉️</div>
+
+                    <div>
+                        <span>Email Us</span>
+                        <strong>info@bigbellyburger.com</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">⌖</div>
+
+                    <div>
+                        <span>Visit Us</span>
+                        <strong>Ahmedabad, Gujarat</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-social">
+
+                    <p>Follow Big Belly Burger</p>
+
+                    <!-- <div class="social-links">
+
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+
+                    </div> -->
+
+                    <div class="social-links">
+
+                        <a href="https://www.instagram.com/bigbellyburgerindia?stkn=cGFvcTJrY285Ymtr" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">
+                            IG
+                        </a>
+
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            FB
+                        </a>
+
+                        <a href="https://www.youtube.com/@bigbellyburger" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube">
+                            YT
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+
+            <div class="contact-form-box">
+
+                <h3>Send Us A Message</h3>
+
+                <form onsubmit="sendMessage(event)">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <input type="email" placeholder="Enter your email" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Subject</label>
+
+                        <select required>
+
+                            <option value="">Select a subject</option>
+                            <option>General Enquiry</option>
+                            <option>Order Related</option>
+                            <option>Franchise Enquiry</option>
+                            <option>Feedback</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Your Message</label>
+
+                        <textarea rows="5" placeholder="Write your message..." required></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="contact-submit">
+                        Send Message →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-top">
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+                    BIG BELLY BURGER
+                </div>
+
+                <p>
+                    Big Taste. Bigger Cravings.
+                    Bringing bold burgers and unforgettable
+                    flavours to burger lovers.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Explore</h3>
+
+                <ul>
+                    <li><a href="#store">Store</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Follow Us</h3>
+
+                <ul>
+                    <li><a href="https://www.instagram.com/bigbellyburgerindia?stkn=cGFvcTJrY285Ymtr" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.youtube.com/@bigbellyburger" target="_blank">YouTube</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 Big Belly Burger. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function toggleMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList
+                .toggle("active");
+
+        }
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert("Thank you! Your message has been received by Big Belly Burger.");
+
+            event.target.reset();
+
+        }
+
+    </script>
+
+</body>
+
+</html>
